@@ -1,1 +1,4 @@
 Will update readme some other time. Meanwhile, follow me on twitter @pecdev
+
+# Feb 18, 2011:
+# Added .gitignore file so the project can be placed directly into a new project, overwriting the existing resources file. It will ignore all files in the project directory except for this file and the Resources file.
