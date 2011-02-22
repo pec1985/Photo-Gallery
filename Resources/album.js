@@ -17,21 +17,28 @@ var photoAlbum = function(params){
 	var list = [];
 	var z = 0;
 	
-	for(var i = 1;i<176;i++){
+	//let's make a smaller loop, just for demo
+	//for(var i = 1;i<176;i++){
+	for(var i = 1;i<20;i++){
 		
 		if(i<100){ if(i>9){ i='0'+i; } else { i='00'+i; } }
-		
+		var imageName = 'album/WallPaper'+i+'.jpg';
+		var imageFile = Ti.Filesystem.getFile(
+			Ti.Filesystem.resourcesDirectory, imageName
+		).toBlob().imageAsThumbnail(67,0,0);
+
 		var image = Ti.UI.createImageView({
-			image:'album/WallPaper'+i+'.jpg',
+			image: imageFile,
 			width:70, height:70,
 			left:5,right:5,
 			top:5, bottom:5,
 			id:z
 		});
 		
-		list[z++]=image.image;
+		list[z++]=imageName;
+		// not needed anymore
 		//thumbnail.js
-		createThumbnail(image,70,0);
+		//createThumbnail(image,70,0);
 		
 		view.add(image);
 	}

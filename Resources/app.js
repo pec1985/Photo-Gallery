@@ -7,9 +7,10 @@ http://pec1985.com/2010/12/11/tutorial-making-and-appcelerator-app-run-better/
 for more information, and leave a comment if you have any questions.
 
 Follow me on twitter @pecdev
+And if you want to, follow my clone and helper @pec1985
 */
 
-Ti.include('thmbnail.js');
+Ti.include('thumbnail.js');
 Ti.include('about.js');
 Ti.include('album.js');
 Ti.include('image.js');
