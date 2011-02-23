@@ -23,9 +23,10 @@ var photoAlbum = function(params){
 		
 		if(i<100){ if(i>9){ i='0'+i; } else { i='00'+i; } }
 		var imageName = 'album/WallPaper'+i+'.jpg';
+		// since the images are local, we can load them this way
 		var imageFile = Ti.Filesystem.getFile(
 			Ti.Filesystem.resourcesDirectory, imageName
-		).toBlob().imageAsThumbnail(67,0,0);
+		).toBlob().imageAsThumbnail(70,0,0);
 
 		var image = Ti.UI.createImageView({
 			image: imageFile,
