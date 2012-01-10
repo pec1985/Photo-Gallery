@@ -6,33 +6,47 @@ Please visit:
 http://pec1985.com/2010/12/11/tutorial-making-and-appcelerator-app-run-better/
 for more information, and leave a comment if you have any questions.
 
+
+EDIT: My blog is now dead. Sometime in the future I will rewrite what I wrote.
+
 Follow me on twitter @pecdev
 And if you want to, follow my clone and helper @pec1985
 */
 
-Ti.include('thumbnail.js');
+// W is the namespace for Windows
+var W = [];
+// Tab is the array of tabs, so we can call Tab[0], Tab[1] etc.. later on
+var Tab = [];
+// This is the namespace for custom functions, in this example project there is only one
+var Utils = [];
+Ti.include('utils.js');
+// windows
 Ti.include('about.js');
 Ti.include('album.js');
-Ti.include('image.js');
+//Ti.include('image.js');
 Ti.include('slideimage.js');
+
 Titanium.UI.setBackgroundColor('#000');
 
-var tabGroup = Titanium.UI.createTabGroup();
+// self calling funtion, unly used to execute code without populating the global scope
+(function(){	
+	var tabGroup = Titanium.UI.createTabGroup();
 
-var tab1 = Titanium.UI.createTab({  
-    icon:'KS_nav_views.png',
-    title:'Tab 1'
-});
-			//album.js
-tab1.window = photoAlbum({tab:tab1,title:'Photo Album'});
-var tab2 = Titanium.UI.createTab({  
-    icon:'KS_nav_ui.png',
-    title:'Tab 2'
-});
-			//about.js
-tab2.window = about({title:'About'});
+	Tab[0] = Titanium.UI.createTab({  
+	    icon:'KS_nav_views.png',
+	    title:'Tab 1',
+		//album.js
+		window: W.PhotoAlbum({title:'Photo Album'})
+	});
+	Tab[1] = Titanium.UI.createTab({  
+	    icon:'KS_nav_ui.png',
+	    title:'Tab 2',
+		//about.js
+		window: W.About({title:'About'})
+	});
 
-tabGroup.addTab(tab1);  
-tabGroup.addTab(tab2);  
+	tabGroup.addTab(Tab[0]);  
+	tabGroup.addTab(Tab[1]);  
 
-tabGroup.open();
+	tabGroup.open();
+})();

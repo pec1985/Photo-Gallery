@@ -1,4 +1,5 @@
 //Created by @pecdev and @pec1985
+
 //Not used on this version, FYI
 var imageView = function(params){
 	var imageId = params.id;

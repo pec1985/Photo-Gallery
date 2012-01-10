@@ -1,5 +1,5 @@
 //Created by @pecdev and @pec1985
-var about = function(params){
+W.About = function(params){
 	var winTitle = params.title;
 	var win = Ti.UI.createWindow({
 		title:winTitle,

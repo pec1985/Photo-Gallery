@@ -1,7 +1,6 @@
 //Created by @pecdev and @pec1985
-var photoAlbum = function(params){
+W.PhotoAlbum = function(params){
 	var winTitle = params.title;
-	var currentTab = params.tab;
 
 	var win = Ti.UI.createWindow({
 		title:winTitle,
@@ -23,13 +22,17 @@ var photoAlbum = function(params){
 		
 		if(i<100){ if(i>9){ i='0'+i; } else { i='00'+i; } }
 		var imageName = 'album/WallPaper'+i+'.jpg';
+		
+
+		// =================================================
 		// since the images are local, we can load them this way
-		var imageFile = Ti.Filesystem.getFile(
-			Ti.Filesystem.resourcesDirectory, imageName
-		).toBlob().imageAsThumbnail(70,0,0);
+			var imageFile = Ti.Filesystem.getFile(
+				Ti.Filesystem.resourcesDirectory, imageName
+			).toBlob().imageAsThumbnail(70,0,0);
+		// =================================================
 
 		var image = Ti.UI.createImageView({
-			image: imageFile,
+			image: imageFile, // for remote images use the imageName,
 			width:70, height:70,
 			left:5,right:5,
 			top:5, bottom:5,
@@ -37,20 +40,20 @@ var photoAlbum = function(params){
 		});
 		
 		list[z++]=imageName;
-		// not needed anymore
-		//thumbnail.js
-		//createThumbnail(image,70,0);
+		
+		//utils.js
+		//for remote images use this:
+		//Utils.CreateThumbnail(image,70,0);
 		
 		view.add(image);
 	}
 	view.addEventListener('click',function(e){
 		//slideimage.js
-		currentTab.open(
-			slideImage({
+		Tab[0].open(
+			W.SlideImage({
 				current:e.source.id,
 				title:'Images',
-				list:list,
-				tab:currentTab
+				list:list
 			})
 		);
 	});
